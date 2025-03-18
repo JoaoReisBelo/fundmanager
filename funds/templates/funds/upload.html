@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Upload Funds</title>
+   </head>
+   <body>
+      <div>
+         <a href="../list">goto list page</a>
+         &nbsp;
+         <a>upload funds page</a>
+      </div>
+      <form action='' method='post' enctype='multipart/form-data'>
+          {% csrf_token %}
+         <div>Select file to upload: <input type='file' name='upload_file'></div>
+         <input type='submit' value='submit'>
+      </form>
+      {% if error %}
+      <div>
+         <a>Failed to upload, please try again. - ({{ error }})</a>
+      </div>
+      {% endif %}
+   </body>
+</html>

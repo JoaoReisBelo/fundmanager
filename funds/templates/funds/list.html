@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>List Funds</title>
+   </head>
+   <body>
+      <div>
+         <a>fund list page</a>
+         &nbsp;
+         <a href="../upload">goto upload page</a>
+      </div>
+      <form action="" method="get" enctype="multipart/form-data">
+        {% csrf_token %}
+         <div>
+		<select name="strategy" onchange="document.forms[0].submit()">
+			<option value="">-</option>
+        {% for strategy, selected in strategies %}
+            <option value="{{ strategy }}"{% if selected %}selected{% endif %}>
+                {{ strategy }}
+             </option>
+        {% endfor %}
+		</select>
+	 </div>
+         <div>
+		<table cellpadding="0" cellspacing="0" border="1">
+			<tr><th>Name</th><th>Strategy</th><th>AUM</th><th>Inception Date</th></tr>
+		{% for fund in funds %}
+			<tr>
+                <td>{{ fund.name }}</td>
+                <td>{{ fund.strategy }}</td>
+                <td>{{ fund.aum|default_if_none:"" }}</td>
+                <td>{{ fund.inception_date|default_if_none:"" }}</td>
+            </tr>
+		{% endfor %}
+            <tr><td colspan="2">{{ funds.count }} Fund(s) shown.</td> <td>{{ total_aum }}</td><td/></tr>
+		</table>
+	 </div>
+      </form>
+   </body>
+</html>
