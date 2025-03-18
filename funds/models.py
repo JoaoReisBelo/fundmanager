@@ -21,7 +21,6 @@ class Fund(models.Model):
     class Meta:
         indexes = [models.Index("strategy", "name", name="ix_fund_strategy")]
 
-    str_fmt = "{name}"
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, verbose_name="ID"
     )
