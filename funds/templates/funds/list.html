@@ -32,7 +32,7 @@
                 <td>{{ fund.inception_date|default_if_none:"" }}</td>
             </tr>
 		{% endfor %}
-            <tr><td colspan="2">{{ funds.count }} Fund(s) shown.</td> <td>{{ total_aum }}</td><td/></tr>
+            <tr><td colspan="2">{{ funds.count }} Fund(s) shown.</td> <td>{{ total_aum|default_if_none:"" }}</td><td/></tr>
 		</table>
 	 </div>
       </form>
