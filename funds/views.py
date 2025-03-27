@@ -64,7 +64,6 @@ class UploadFileForm(forms.Form):
     upload_file = forms.FileField()
 
 
-@method_decorator(csrf_exempt, name="dispatch")
 class UploadFileView(View):
 
     def post(self, request, *args, **kwargs):
